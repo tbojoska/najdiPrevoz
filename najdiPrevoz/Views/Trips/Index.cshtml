@@ -1,0 +1,161 @@
+﻿@model IEnumerable<najdiPrevoz.Models.Trip>
+
+@{
+    ViewBag.Title = "Index";
+}
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css" />
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+
+<title>NajdiPrevoz.mk - Сите патувања</title>
+<section id="One" class="wrapper style3">
+    <div class="inner">
+        <header class="align-center">
+            <p>листа на сите активни</p>
+            <h2>Патувања</h2>
+        </header>
+    </div>
+</section>
+
+<section id="two" class="wrapper style2">
+    <div class="inner">
+        <div class="box">
+            <div class="content">
+                <header class="align-center">
+                    <p>Преглед на патувањата: </p>
+                </header>
+                <br />
+                <p>
+                    <button class="button">
+                        @Html.ActionLink("Креирај ново патување", "Create", null, new { style = "text-decoration:none; color:white;" })
+                    </button>
+                </p>
+                <div class="table-wrapper">
+                    <table class="tabela" id="dataTable">
+
+                        <thead class="align-center red" style="background-color:#8a4680">
+                        <th class="align-center">
+                            <strong style="color:white">Возач</strong>
+                        </th>
+                        <th class="align-center">
+                            <strong style="color:white">Почетна дестинација</strong>
+                        </th>
+                        <th class="align-center">
+                            <strong style="color:white">Крајна дестинација</strong>
+                        </th>
+                        <th class="align-center">
+                            <strong style="color:white">Датум</strong>
+                        </th>
+                        <th class="align-center">
+                            <strong style="color:white">Време</strong>
+                        </th>
+                        <th class="align-center">
+                            <strong style="color:white">Број на седишта</strong>
+                        </th>
+                        @*<th class="align-center">
+                <strong style="color:darkslategrey">Број на слободни седишта</strong>
+            </th>
+                        *@
+
+                        <th class="align-center">
+                            <strong style="color:white">Опис на патувањето</strong>
+                        </th>
+                        <th class="align-center">
+                            <strong style="color:white">Цена по патник</strong>
+                        </th>
+                        <th></th>
+
+                        </thead>
+                        <tbody class="align-center">
+                            @foreach (var item in Model)
+                            {
+
+                                <tr>
+                                    <td>
+										<a href="@Url.Action("Index", "Korisniks")">@Html.DisplayFor(modelItem => item.Creator)</a>
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.FromDestination)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.ToDestination)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Time)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.TimeHourMin)
+
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Capacity)
+                                    </td>
+                                    @*
+                        <td>
+                            @Html.DisplayFor(modelItem => item.FreeSeats)
+                        </td>
+                                    *@
+
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Description)
+                                    </td>
+
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Price)
+                                    </td>
+                                    <td>
+                                        @if (item.CanEdit)
+                                        {
+                                            <a href="@Url.Action("Edit", "Trips", new { id = item.Id })" style="text-decoration:none; color:black;">Edit</a>
+
+                                        }
+                                        <a href="@Url.Action("Details", "Trips", new { id = item.Id })" style="text-decoration:none; color:black;">Details</a>
+
+                                        @if (item.CanEdit || User.IsInRole("Admin"))
+                                        {
+                                            <a href="@Url.Action("Delete", "Trips", new { id = item.Id })" style="text-decoration:none; color:black;">Delete</a>
+
+                                        }
+
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                    
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+   
+
+</section>
+ 
+
+
+<style>
+    .content {
+        width: 100%;
+        margin: auto;
+    }
+	.tabela {
+	    color: black;
+        width: 100%;
+    }
+
+	.red {
+	    vertical-align: middle;
+    
+    }
+</style>
+
+
+<script>
+	$('.tabela').on('click', 'tbody tr', function () {
+		
+		window.location.href = $(this).data('href');    
+    });
+
+
+</script>

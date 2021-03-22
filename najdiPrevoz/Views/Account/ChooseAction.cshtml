@@ -1,0 +1,90 @@
+﻿
+@{
+	ViewBag.Title = "ChooseAction";
+}
+
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>@ViewBag.Title - My ASP.NET Application</title>
+</head>
+
+
+<section id="One" class="wrapper style3">
+	<div class="inner">
+		<header class="align-center">
+			<p></p>
+			<h2>Избери начин на најавување</h2>
+		</header>
+	</div>
+</section>
+
+<section id="two" class="wrapper style2">
+	<div class="inner">
+		<div class="box">
+			<div class="content">
+				<header class="align-center">
+					<p>Како сакате да се најавите</p>
+					<h2>Патник или превозник</h2>
+				</header>
+
+
+				<div class="bg-text align-center">
+					</br>
+					<div class="row dvete">
+						<div class="col-xs-3 ">
+							<div class="prvo">
+								<a href="@Url.Action("Index","Trips")">
+									<img class="on" src="@Url.Content("~/patnik.png")" width="320px" />
+
+							</div>
+						</div>
+						<div class="col-xs-3">
+							<div class="prvo">
+								<a href="@Url.Action("Create","Trips")">
+									<img class="on" src="@Url.Content("~/prevoznik.png")" width="320px" />
+
+							</div>
+						</div>
+					</div>
+				</div>
+					<!--Ovde e krajot od predhodnoto-->
+				</div>
+		</div>
+	</div>
+</section>
+
+<style>
+	.bg-text {
+		background-color: #ded7e0;
+		padding: 20px;
+		height: 100%;
+		text-align: center;
+
+	}
+
+	.dvete img {
+		display: block;
+		
+	}
+
+	.dvete {
+		margin-left: 150px;
+		
+	}
+
+	.dvete > .prvo {
+		position: center;
+		display: inline-block;
+		vertical-align: middle;
+	}
+	
+
+	.row .on:hover {
+		transform: scale(1.2);
+	}
+
+
+
+</style>

@@ -1,0 +1,99 @@
+﻿@model najdiPrevoz.Models.Trip
+
+@{
+	ViewBag.Title = "Edit";
+}
+<title>NajdiPrevoz.mk - Измени</title>
+
+	<section id="One" class="wrapper style3">
+		<div class="inner">
+			<header class="align-center">
+				<p></p>
+				<h2>Измени го патувањето</h2>
+			</header>
+		</div>
+	</section>
+
+	<section id="two" class="wrapper style2">
+		<div class="inner">
+			<div class="box">
+				<div class="content">
+					<header class="align-center">
+						<p>Направете промени на патувањето</p>
+					</header>
+
+					<div class="text-center align-center" >
+						@using (Html.BeginForm())
+						{
+							@Html.AntiForgeryToken()
+
+						<div class="form-horizontal">
+
+							@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+							@Html.HiddenFor(model => model.Id)
+							<br />
+							<div class="form-group">
+								@Html.LabelFor(model => model.Time, htmlAttributes: new { @class = "control-label col-md-2" })
+								<div class="col-md-10">
+									@Html.EditorFor(model => model.Time, new { htmlAttributes = new { @class = "form-control" } })
+									@Html.ValidationMessageFor(model => model.Time, "", new { @class = "text-danger" })
+								</div>
+							</div>
+							<br />
+
+							<div class="form-group">
+								@Html.LabelFor(model => model.TimeHourMin, htmlAttributes: new { @class = "control-label col-md-2" })
+								<div class="col-md-10">
+									@Html.EditorFor(model => model.TimeHourMin, new { htmlAttributes = new { @class = "form-control" } })
+									@Html.ValidationMessageFor(model => model.TimeHourMin, "", new { @class = "text-danger" })
+								</div>
+							</div>
+							<br />
+
+
+							<div class="form-group">
+								@Html.LabelFor(model => model.Price, htmlAttributes: new { @class = "control-label col-md-2" })
+								<div class="col-md-10">
+									@Html.EditorFor(model => model.Price, new { htmlAttributes = new { @class = "form-control" } })
+									@Html.ValidationMessageFor(model => model.Price, "", new { @class = "text-danger" })
+								</div>
+							</div>
+							<br />
+							<div class="form-group">
+								@Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
+								<div class="col-md-10">
+									@Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+									@Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+								</div>
+							</div>
+							<br />
+
+
+							<div class="form-group">
+								<div class="col-md-offset-2 col-md-10">
+									<input type="submit" value="Зачувај" class="button special" />
+								</div>
+							</div>
+						</div>
+						}
+
+					<div>
+						<button class="button alt small">
+							@Html.ActionLink("Врати се назад", "Index", null, new { style = "text-decoration:none;" })
+						</button>
+					</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</section>
+
+<style>
+	.content {
+		width: 50%;
+		margin:auto;
+	}
+
+</style>
+

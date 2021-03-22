@@ -1,0 +1,106 @@
+﻿@model najdiPrevoz.Models.Trip
+
+@{
+	ViewBag.Title = "Details";
+}
+<title>NajdiPrevoz.mk - Детали</title>
+<style>
+	.red{
+		color:red;
+	}
+</style>
+	<section id="One" class="wrapper style3">
+		<div class="inner">
+			<header class="align-center">
+				<h2>Детали за патувањето</h2>
+			</header>
+		</div>
+	</section>
+
+
+	<section id="two" class="wrapper style2 align-center"">
+		<div class="inner align-center"">
+			<div class="box>
+				<div class="content align-center text-center">
+
+					<div class="align-center">
+						<hr />
+
+						@if (Model.FreeSeats == 0)
+						{
+							<h2 class="red">Бројот на слободни места е веќе пополнет!</h2>
+							<br />
+						}
+					<div id="content2">
+						<h4 style="background-color:#8a4680; color:white">
+							@Html.DisplayNameFor(model => model.FromDestination)
+						</h4>
+
+						<h3>@Html.DisplayFor(model => model.FromDestination) </h3>
+
+						<h4 style="background-color:#8a4680; color:white">@Html.DisplayNameFor(model => model.ToDestination)</h4>
+						<h3>@Html.DisplayFor(model => model.ToDestination)</h3>
+
+						<h4 style="background-color:#8a4680; color:white">Датум</h4>
+						<h3>@Html.DisplayFor(model => model.Time)</h3>
+
+						<h4 style="background-color:#8a4680; color:white">Време</h4>
+						<h3>@Html.DisplayFor(model => model.TimeHourMin)</h3>
+
+						<h4 style="background-color:#8a4680; color:white">@Html.DisplayNameFor(model => model.Price)</h4>
+						<h3>@Html.DisplayFor(model => model.Price)</h3>
+
+
+						<h4 style="background-color:#8a4680; color:white">@Html.DisplayNameFor(model => model.FreeSeats)</h4>
+						<h3>@Html.DisplayFor(model => model.FreeSeats)</h3>
+
+
+						<h4 style="background-color:#8a4680; color:white">@Html.DisplayNameFor(model => model.Description)</h4>
+						<h3>@Html.DisplayFor(model => model.Description)</h3>
+
+
+						<h4 style="background-color:#8a4680; color:white">Опис на возилото</h4>
+						<h3>@Html.DisplayFor(model => model.AutoDescr)</h3>
+
+					</div>
+					</div>
+					<br />
+					<p class="navbar-link">
+						@if (Model.CanEdit == true)
+						{
+							<button class="button special">
+								@Html.ActionLink("Промени", "Edit", new { id = Model.Id }, new { style = "text-decoration:none; color:white;" })
+							</button>
+						}
+					
+							<button class="button alt small">
+								@Html.ActionLink("Врати се назад", "Index", "Trips", null, new { style = "text-decoration:none;" })
+							</button>
+						
+						@if (Model.FreeSeats != 0)
+						{
+							<button class="btn btn-default">
+								@Html.ActionLink("Резервирај", "Reserve", new { id = Model.Id }, new { style = "text-decoration:none; color:white;" })
+							</button>
+						}
+
+					</p>
+
+
+				</div>
+			</div>
+		</div>
+	</section>
+
+
+<style>
+	#content2 {
+		width: 80%;
+		margin: auto;
+	}
+
+	h4 {
+		width: 60%;
+		margin: auto;
+	}
+</style>

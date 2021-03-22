@@ -1,0 +1,94 @@
+﻿@model najdiPrevoz.Models.IndexViewModel
+@{
+    ViewBag.Title = "Manage";
+}
+
+<!-- One -->
+<section id="One" class="wrapper style3">
+	<div class="inner">
+		<header class="align-center">
+			<p></p>
+			<h2>Твојот профил </h2>
+		</header>
+	</div>
+</section>
+
+<!-- Two -->
+<section id="two" class="wrapper style2 align-center">
+	<div class="inner">
+		<div class="box">
+			<div class="content align-center">
+				<header class="align-center">
+					<p>Променете ги вашите лични податоци</p>
+				</header>
+
+				<div>
+					<br /> <br />
+					<dl class="dl-horizontal">
+						<dt>Profile picture:</dt>
+						<dd id="slika">
+							<img src="@Url.Action("UserPhotos", "Home")" style="width:160px;height:160px; background: #FFFFFF;
+                                 margin: auto;
+                                 -moz-border-radius: 60px;
+                                 border-radius: 100px;
+                                 padding: 6px;
+                                 box-shadow: 0px 0px 20px #888;" />
+						</dd>
+						<dd>
+							<h1>@User.Identity.Name </h1>
+						</dd>
+						<br />
+						<dd id="slika">
+
+							@if (Model.HasPassword)
+							{
+								<button class="btn btn-default">
+									@Html.ActionLink("Change your password", "ChangePassword", null, htmlAttributes: new { style = "text-decoration:none; color:white;" })
+								</button>
+							}
+							else
+							{
+
+								<button class="btn btn-default">
+									@Html.ActionLink("Create", "SetPassword", null, htmlAttributes: new { style = "text-decoration:none; color:white;" })
+								</button>
+							}
+
+						</dd>
+						<br />
+
+
+						<dt>Phone Number:</dt>
+						<dd>
+							@(Model.PhoneNumber ?? "None")
+							@if (Model.PhoneNumber != null)
+							{
+								<br />
+								<text>[&nbsp;&nbsp;@Html.ActionLink("Change", "AddPhoneNumber")&nbsp;&nbsp;]</text>
+								using (Html.BeginForm("RemovePhoneNumber", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+								{
+									@Html.AntiForgeryToken()
+									<text>[<input type="submit" value="Remove" class="btn-link" />]</text>
+								}
+							}
+							else
+							{
+								<text>[&nbsp;&nbsp;@Html.ActionLink("Add", "AddPhoneNumber")</text>
+							}
+						</dd>
+
+
+				</div>
+
+
+			</div>
+		</div>
+	</div>
+</section>
+
+<style>
+	#slika {
+	   margin-left: 0%;
+    }
+</style>
+

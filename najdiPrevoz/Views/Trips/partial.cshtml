@@ -1,0 +1,32 @@
+﻿<div class="container">
+	<div class="row">
+		<div class="col-sm-4"></div>
+		
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h1> Bravo, uspeshno</h1>
+				</div>
+				<div class="modal-body">
+					<h5>Ova e tekstot na pop up prozorot</h5>
+				</div>
+				<div class="modal-footer">
+					<button class="button alt" id="btnOK" onclick="">OK</button>
+					<button class="button alt" data-dismiss="modal" id="btnCancel" onclick="">Close</button>
+				</div>
+
+
+			</div>
+
+		</div>
+
+	</div>
+</div>
+
+<script type="text/javascript">
+	$(function () {
+		$('#btnCancel').click(function () {
+			$('#modal-container').modal('hide');
+		});
+	});
+</script>

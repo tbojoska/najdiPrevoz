@@ -1,0 +1,139 @@
+﻿@model najdiPrevoz.Models.Trip
+
+@{
+    ViewBag.Title = "Create";
+}
+<title>NajdiPrevoz.mk - Креирај патување</title>
+    <section id="One" class="wrapper style3">
+        <div class="inner">
+            <header class="align-center">
+                <p></p>
+                <h2>Kреирај ново патување</h2>
+            </header>
+        </div>
+    </section>
+
+    <section id="two" class="wrapper style2">
+        <div class="inner">
+            <div class="box">
+                <div class="content align-center">
+
+
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+
+                    <div class="form-horizontal">
+                        <hr />
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        <div class="form-group">
+                            <strong style="color:darkslategrey">Почетна дестинација</strong>
+                            
+                            <div class="col-md-10">
+                                @Html.DropDownListFor(model => model.FromDestination, new SelectList(Enum.GetValues(typeof(Gradovi))),
+                                                    "Избери почетна дестинација", new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.FromDestination, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <br />
+                        <div class="form-group">
+                            <strong style="color:darkslategrey">Крајна дестинација</strong>
+                            <div class="col-md-10">
+                                @Html.DropDownListFor(model => model.ToDestination, new SelectList(Enum.GetValues(typeof(Gradovi))),
+                                                    "Избери крајна дестинација", new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.ToDestination, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <br />
+                        <!--Ovde e za datum, ama ne go prekrstiv za da ne menuvame segde-->
+                        <div class="form-group">
+                            <strong style="color:darkslategrey">Датум (dd.mm.yyyy)</strong>
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.Time, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Time, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <br />
+
+
+                        <div class="form-group">
+                            <strong style="color:darkslategrey">Време (hh:mm)</strong>
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.TimeHourMin, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.TimeHourMin, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <br />
+                        <div class="form-group">
+                            <strong style="color:darkslategrey">Вкупен број на седишта</strong>
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.Capacity, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Capacity, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <br />
+                        <div class="form-group">
+                            <strong style="color:darkslategrey">Опис на патувањето</strong>
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <br />
+                        <div class="form-group">
+                            <strong style="color:darkslategrey">Опис на возилото</strong>
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.AutoDescr, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.AutoDescr, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <br />
+                        <div class="form-group">
+                            <strong style="color:darkslategrey">Цена по патник</strong>
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.Price, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Price, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <br />
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <input type="submit" value="Креирај" class="button special" />
+                            </div>
+                        </div>
+                    </div>
+                    }
+
+                    <div>
+                        <button class="button alt small">
+                            @Html.ActionLink("Врати се назад", "Index",null, new { style = "text-decoration:none;" })
+                        </button>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+<style>
+    .content {
+        width: 60% ;
+        margin: auto;
+    }
+
+	strong {
+	    text-align: left;
+    }
+	
+
+</style>
+
+
+
+<script>
+    $(document).ready(function () {
+        $("#datepicker").datepicker({});
+    });
+</script>

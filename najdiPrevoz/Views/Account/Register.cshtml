@@ -1,0 +1,134 @@
+﻿@model najdiPrevoz.Models.RegisterViewModel
+@{
+	ViewBag.Title = "Register";
+}
+
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>@ViewBag.Title - My ASP.NET Application</title>
+</head>
+
+<section id="One" class="wrapper style3">
+	<div class="inner">
+		<header class="align-center">
+			<p></p>
+			<h2>Регистрирај се</h2>
+		</header>
+	</div>
+</section>
+
+<section id="two" class="wrapper style2">
+	<div class="inner">
+		<div class="box">
+			<div class="content align-center">
+				<header class="align-center">
+					<p>Нов корисник?</p>
+					<h2>Регистрирај се и веднаш започни со патување</h2>
+				</header>
+
+				<div class="sodrzina">
+					@using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" }))
+					{
+						@Html.AntiForgeryToken()
+						<hr />
+						@Html.ValidationSummary("", new { @class = "text-danger" })
+						<div class="form-group">
+							<div class="label">Name *</div>
+							<div class="col-md-10">
+								@Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+							</div>
+						</div>
+						<br />
+						<div class="form-group">
+							<div class="label">Surname *</div>
+							<div class="col-md-10">
+								@Html.TextBoxFor(m => m.Surname, new { @class = "form-control" })
+							</div>
+						</div>
+						<br />
+						<div class="form-group">
+							<div class="label">UserName *</div>
+							<div class="col-md-10">
+								@Html.TextBoxFor(m => m.Nick, new { @class = "form-control" })
+							</div>
+						</div>
+						<br />
+						<div class="form-group">
+							<div class="label">Age *</div>
+							<div class="col-md-10">
+								@Html.TextBoxFor(m => m.Age, new { @class = "form-control" })
+							</div>
+						</div>
+						<br />
+						<div class="form-group">
+							<div class="label">Email *</div>
+							<div class="col-md-10">
+								@Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+							</div>
+						</div>
+						<br />
+						<div class="form-group">
+							<div class="label">Phone number (format 070-000-000) *</div>
+							<div class="col-md-10">
+								@Html.TextBoxFor(m => m.PhoneNumber, new { @class = "form-control" })
+							</div>
+						</div>
+						<br />
+						<div class="form-group">
+							<div class="label">Password *</div>
+							<div class="col-md-10">
+								@Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+							</div>
+						</div>
+						<br />
+						<div class="form-group">
+							<div class="label">Confirm password *</div>
+							<div class="col-md-10">
+								@Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
+							</div>
+						</div>
+						<br />
+						<div class="form-group">
+							<div class="label">Upload your photo *</div>
+							<div class="col-md-10">
+								<input type="file" name="UserPhoto" id="fileUpload" accept=".png,.jpg,.jpeg,.gif,.tif" />
+							</div>
+						</div>
+
+
+						<br />
+
+						<div class="kopche">
+							<div class="col-md-offset-2 col-md-10">
+								<a href="~/Views/Account/ChooseAction.cshtml">
+									<input type="submit" class="button special" value="Register" />
+								</a>
+							</div>
+						</div>
+					}
+				</div>
+
+			</div>
+		</div>
+	</div>
+</section>
+
+<style>
+	.content {
+		width: 50%;
+		margin:auto;
+	}
+	#fileUpload {
+		position: center;
+		
+	}
+
+	.form-group{
+		text-align: left;
+	}
+	.label {
+		color: black;
+	}
+
+</style>

@@ -1,0 +1,75 @@
+﻿@model najdiPrevoz.Models.Reservation
+
+@{ ViewBag.Title = "Details"; }
+
+<title>NajdiPrevoz.mk - Детали</title>
+<style>
+    .red {
+        color: red;
+    }
+</style>
+<section id="One" class="wrapper style3">
+    <div class="inner">
+        <header class="align-center">
+            <h2>Детали за патувањето</h2>
+        </header>
+    </div>
+</section>
+
+
+<section id="two" class="wrapper style2 align-center" ">
+    <div class="inner align-center" ">
+        <div class="box>
+            <div class="content align-center text-center">
+
+                <div class="align-center">
+                    <hr />
+
+                  
+                    <div id="content2">
+                        <h4 style="background-color:#8a4680; color:white">
+                            @Html.DisplayNameFor(model => model.FromDestination)
+                        </h4>
+
+                        <h3>@Html.DisplayFor(model => model.FromDestination) </h3>
+
+                        <h4 style="background-color:#8a4680; color:white">@Html.DisplayNameFor(model => model.ToDestination)</h4>
+                        <h3>@Html.DisplayFor(model => model.ToDestination)</h3>
+
+                        <h4 style="background-color:#8a4680; color:white">Датум</h4>
+                        <h3>@Html.DisplayFor(model => model.Time)</h3>
+
+                        <h4 style="background-color:#8a4680; color:white">Време</h4>
+                        <h3>@Html.DisplayFor(model => model.TimeHourMin)</h3>
+
+                        <h4 style="background-color:#8a4680; color:white">@Html.DisplayNameFor(model => model.Price)</h4>
+                        <h3>@Html.DisplayFor(model => model.Price)</h3>
+
+
+                    </div>
+                </div>
+                <br />                
+                <button class="button alt">
+                    @Html.ActionLink("Back to List", "MyReservations", null, htmlAttributes: new {style = "text-decoration:none" })
+                </button>
+
+
+
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<style>
+    #content2 {
+        width: 80%;
+        margin: auto;
+    }
+
+    h4 {
+        width: 60%;
+        margin: auto;
+    }
+</style>
+

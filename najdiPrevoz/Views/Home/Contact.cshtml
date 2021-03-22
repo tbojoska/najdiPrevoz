@@ -1,0 +1,112 @@
+﻿@model najdiPrevoz.Models.MailModels
+
+@{
+	ViewBag.Title = "Contact";
+}
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<!-- One -->
+<section id="One" class="wrapper style3">
+	<div class="inner">
+		<header class="align-center">
+			<p></p>
+			<h2>Контакт</h2>
+		</header>
+	</div>
+</section>
+
+<!-- Two -->
+<section id="two" class="wrapper style2">
+	<div class="inner align-center">
+		<div class="box">
+			<div class="content align-center">
+				<header class="align-center">
+					<p>Каде може да не најдете</p>
+					<h2>Информации за контакт</h2>
+				</header>
+				<div class="sodrzhina">
+					<h3>
+						НајдиПревоз.МК
+					</h3>
+
+					<p>
+						Телефон: +389 47 207 333
+					</p>
+
+					<p>
+						Емаил: info@najdiprevoz.mk
+					</p>
+
+					<p>
+						www.najdiprevoz.mk
+					</p>
+					<img src="~/imgs/logo2.png" width="200px" />
+
+				</div>
+				<br />
+				<br />
+
+
+				<div class="poraka">
+					<h3>
+						Би сакале нешто да не информирате
+					</h3>
+
+					<p>
+						Пратете ни порака и ќе ви одговориме најбрзо што можеме
+					</p>
+
+					<div>
+
+						@using (Html.BeginForm("Contact", "Home", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @id = "contact-form", role = "form" }))
+						{
+							@Html.ValidationSummary()
+							<fieldset>
+								<div class="form-div-1">
+									<label class="name">
+										@Html.TextBoxFor(m => m.Ime, new { @placeholder = "Име", @type = "text" })
+									</label>
+								</div>
+								<div class="form-div-2">
+									<label class="email">
+										@Html.TextBoxFor(m => m.Email, new { @placeholder = "Емаил", @type = "email" })
+									</label>
+								</div>
+								<div>
+									<label class="message">
+										@Html.TextAreaFor(m => m.Message, new { @placeholder = "Порака" })
+									</label>
+								</div>
+								<div class="button-wrapper">
+									<input type="submit" value="Испрати Порака" name="submit" class="button"><span></span>
+								</div>
+							</fieldset>
+						}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<style>
+	.content {
+	}
+
+	.sodrzhina {
+		width: 80%;
+		text-align: center;
+		border: solid;
+		border-width: 1px;
+		color: black;
+		font-size: larger;
+		border-color: lightgray;
+		margin-left: 10%;
+	}
+
+	.poraka {
+		width: 80%;
+		margin-left: 10%;
+	}
+</style>
+

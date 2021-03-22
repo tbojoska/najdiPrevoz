@@ -1,0 +1,202 @@
+﻿@model IEnumerable<najdiPrevoz.Models.ApplicationUser>
+@{
+	ViewBag.Title = "Home Page";
+}
+
+
+<!-- Banner -->
+<section class="banner full">
+	<article>
+		<img src="~/imgs/slide02.jpg" alt="" />
+		<div class="inner">
+			<header>
+				<p>Добредојдовте</p>
+				<h2>најдиПревоз.мк</h2>
+			</header>
+		</div>
+	</article>
+	<article>
+		<img src="~/imgs/img2.jpg" alt="" />
+		<div class="inner">
+			<header>
+				<h2>Сакате да патувате</h2>
+				<p>но немате сопствено возило?</p>
+			</header>
+		</div>
+	</article>
+	<article>
+		<img src="~/imgs/img7.jpg" alt="" />
+		<div class="inner">
+			<header>
+				<h2>Ќе патувате</h2>
+				<p>и имате слободно место?</p>
+			</header>
+		</div>
+	</article>
+	<article>
+		<img src="~/imgs/img3.png" alt="" />
+		<div class="inner">
+			<header>
+				<p>Резервирајте патување брзо и лесно</p>
+				<h2>Насекаде низ Македонија</h2>
+			</header>
+		</div>
+	</article>
+	<article>
+		<img src="~/imgs/img8.jpg" alt="" />
+		<div class="inner">
+			<header>
+				<p>Испланирајте го пристигнувањето до вашата дестинација</p>
+				<h2>со само неколку клика</h2>
+			</header>
+		</div>
+	</article>
+</section>
+
+<!-- One -->
+<section id="one" class="wrapper style2">
+	<div class="inner">
+		<div class="grid-style">
+
+			<div>
+				<div class="box">
+					<div class="image fit align-center">
+						<img class="image i1" src="~/imgs/cover3.png" alt="" />
+					</div>
+					<div class="content">
+						<header class="align-center">
+							<p>Најавете се како</p>
+							<h2>Патник</h2>
+						</header>
+						<p> Имате неодложна работа и мора да патувате во друг град, но сакате да го избегнете метежот и непријатноста на автобусите. Или пак сте студент и сакате брзо и лесно да патувате во својот град.</p>
+						<footer class="align-center">
+							<a href="~/Trips/Index" class="button alt">Сите патувања</a>
+						</footer>
+					</div>
+				</div>
+			</div>
+
+			<div>
+				<div class="box">
+					<div class="align-center image fit">
+						<img class="image i2" src="~/imgs/cover4.png" alt="" />
+					</div>
+					<div class="content">
+						<header class="align-center">
+							<p>Најавете се како</p>
+							<h2>Превозник</h2>
+						</header>
+						<p> Патувате сами или имате слободно место во вашето возило. Зошто и да не заработите и да помогнете некому кој патува а нема сопствено возило.</p>
+						<footer class="align-center">
+							<a href="~/Trips/Create" class="button alt">Креирај патување</a>
+						</footer>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+</section>
+
+<!-- Two -->
+<section id="two" class="wrapper style3">
+	<div class="inner">
+		<header class="align-center">
+			<p>Ви гарантираме сигурност, комфорт и лесно користење. Најавете се веднаш и уживајте во сите следни</p>
+			<h2>Патувања</h2>
+		</header>
+	</div>
+</section>
+
+<!-- Three -->
+<section id="three" class="wrapper style2">
+	<div class="inner">
+		<header class="align-center">
+			<p class="special">Листа на нашите најдобро рангирани</p>
+			<h2>Превозници</h2>
+		</header>
+		<div class="gallery align-center">
+			
+			
+			<form method="post" enctype="multipart/form-data" class=" cela align-center">
+				<table class="tabela align-center table">
+					<thead> </thead>
+					<tbody>
+						<tr>
+
+							@foreach (var item in Model)
+
+							{
+								if (item.UserPhoto != null)
+								{
+									string imageBase64 = Convert.ToBase64String(item.UserPhoto);
+									string imageSrc = string.Format("data:image/gif;base64,{0}", imageBase64);
+
+									<td>
+
+										<img src="@imageSrc" height="80" width="80" class="photo" /> <br />
+										@Html.DisplayFor(modelItem => item.UserName) <br />
+										Likes: @Html.DisplayFor(modelItem => item.countLikes) <br />
+									</td>
+								}
+								else
+								{
+									<td>
+
+										<img src="~/imgs/noImage.png" height="80" width="80" class="photo" /> <br />
+										@Html.DisplayFor(modelItem => item.UserName) <br />
+										Likes: @Html.DisplayFor(modelItem => item.countLikes) <br />
+									</td>
+
+
+
+
+								}
+							}
+
+						</tr>
+
+					</tbody>
+
+				</table>
+			</form>
+
+
+
+
+
+		</div>
+	</div>
+</section>
+
+<style>
+	.i1, .i2 {
+		margin-left: -0%;
+	}
+
+	.tabela {
+		width: auto;
+		border: solid;
+		border-color: darkgrey;
+		background-color: #e8edea;
+		color: black;
+		border-width: 3px;
+		margin:auto;
+		
+		
+	}
+	.cela {
+		align-content: center;
+		text-align: center;
+	}
+	.photo {
+		margin-left: auto;
+		border-radius: 50%;
+	}
+
+	.gallery {
+		width: 200%;
+		height: 200%;
+	}
+
+</style>
